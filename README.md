@@ -1,10 +1,10 @@
-# godeeper
+# Project Go Deeper
 
-A new Flutter project.
+A Flutter project aim at note sharing among annoymous users. There must me one master account.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This project is a passion project with the goal of creating community.
 
 A few resources to get you started if this is your first Flutter project:
 
