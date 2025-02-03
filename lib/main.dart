@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:godeeper/pages/all_notes.dart';
+import 'package:godeeper/pages/home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
-      home: const MyNotesPage(title: 'Your Go Deeper Notes'),
+      home: const HomePage(title: 'Your Go Deeper Notes'),
     );
   }
 }

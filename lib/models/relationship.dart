@@ -6,40 +6,40 @@ import 'dart:convert';
 class Relationship {
 
   final String uuid;
-  final String user1;
-  final String user2;
+  final String keeper;
+  final String keepee;
 
   Relationship({
     required this.uuid,
-    required this.user1,
-    required this.user2,
+    required this.keeper,
+    required this.keepee,
   });
 
   Relationship copyWith({
     String? uuid,
-    String? user1,
-    String? user2,
+    String? keeper,
+    String? keepee,
   }) {
     return Relationship(
       uuid: uuid ?? this.uuid,
-      user1: user1 ?? this.user1,
-      user2: user2 ?? this.user2,
+      keeper: keeper ?? this.keeper,
+      keepee: keepee ?? this.keepee,
     );
   }
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'uuid': uuid,
-      'user1': user1,
-      'user2': user2,
+      'keeper': keeper,
+      'keepee': keepee,
     };
   }
 
   factory Relationship.fromMap(Map<String, dynamic> map) {
     return Relationship(
       uuid: map['uuid'] as String,
-      user1: map['user1'] as String,
-      user2: map['user2'] as String,
+      keeper: map['keeper'] as String,
+      keepee: map['keepee'] as String,
     );
   }
 
@@ -48,7 +48,7 @@ class Relationship {
   factory Relationship.fromJson(String source) => Relationship.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
-  String toString() => 'Relationship(uuid: $uuid, user1: $user1, user2: $user2)';
+  String toString() => 'Relationship(uuid: $uuid, keeper: $keeper, keepee: $keepee)';
 
   @override
   bool operator ==(covariant Relationship other) {
@@ -56,11 +56,11 @@ class Relationship {
   
     return 
       other.uuid == uuid &&
-      other.user1 == user1 &&
-      other.user2 == user2;
+      other.keeper == keeper &&
+      other.keepee == keepee;
   }
 
   @override
-  int get hashCode => uuid.hashCode ^ user1.hashCode ^ user2.hashCode;
+  int get hashCode => uuid.hashCode ^ keeper.hashCode ^ keepee.hashCode;
 
 }

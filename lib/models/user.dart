@@ -3,19 +3,23 @@ import 'dart:convert';
 
 class User {
 
+  final String funnyName;
   final String username;
   final String uuid;
 
   User({
+    required this.funnyName,
     required this.username,
     required this.uuid,
   });
 
   User copyWith({
+    String? funnyName,
     String? username,
     String? uuid,
   }) {
     return User(
+      funnyName: funnyName ?? this.funnyName,
       username: username ?? this.username,
       uuid: uuid ?? this.uuid,
     );
@@ -23,6 +27,7 @@ class User {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'funnyName': funnyName,
       'username': username,
       'uuid': uuid,
     };
@@ -30,6 +35,7 @@ class User {
 
   factory User.fromMap(Map<String, dynamic> map) {
     return User(
+      funnyName: map['funnyName'] as String,
       username: map['username'] as String,
       uuid: map['uuid'] as String,
     );
@@ -40,22 +46,24 @@ class User {
   factory User.fromJson(String source) => User.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
-  String toString() => 'User(username: $username, uuid: $uuid)';
+  String toString() => 'User(funnyName: $funnyName, username: $username, uuid: $uuid)';
 
   @override
   bool operator ==(covariant User other) {
     if (identical(this, other)) return true;
   
     return 
+      other.funnyName == funnyName &&
       other.username == username &&
       other.uuid == uuid;
   }
 
   @override
-  int get hashCode => username.hashCode ^ uuid.hashCode;
+  int get hashCode => funnyName.hashCode ^ username.hashCode ^ uuid.hashCode;
 
   static const testData = [
-    { 'username': "annoymous monkey 1", 'uuid': '11111111111'}
+    { 'funnyName': 'funnymonkey28', 'username': "annoymous monkey 1", 'uuid': '11111111111'},
+    { 'funnyName': 'anaolousconfortti', 'username': "annoymous monkey 1", 'uuid': '11111111111'},
   ];
 
 }
