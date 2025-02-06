@@ -3,37 +3,17 @@ import cors from "cors";
 import "./loadEnvironment.mjs";
 import "express-async-errors";
 import tags from "./routes/tags.mjs";
-// import posts from "./routes/posts.mjs";
+import sermons from "./routes/sermons.mjs";
 
-// const express = require('express');
-// const { default: db } = require('./db/conn.mjs');
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
 app.use('/tags', tags);
-
-// app.get('/taggs', async (req, res) => {
-//   console.log('STARTING');
-//   let collection = await db.collection('tags');
-//   console.log('STARTING 1');
-//   console.log(collection);
-//   let result = await collection.find({}).limit(50).toArray();
-//   console.log('STARTING 2');
-//   console.log(result);
-
-//   res.send(results).status(200);
-// });
+app.use('/sermons', sermons);
 
 app.get('/', (req, res) => res.send('Hello world!'))
-
-// Sermons
-app.get('/sermon', (req, res) => res.send('Hello sermon!'))
-app.get('/sermons', (req, res) => res.send('Hello sermons!'))
-app.put('/sermons', (req, res) => res.send('Hello world!'))
-app.post('/sermons', (req, res) => res.send('Hello world!'))
-app.delete('/sermons', (req, res) => res.send('Hello world!'))
 
 // Users
 app.get('/user', (req, res) => res.send('Hello user!'))
