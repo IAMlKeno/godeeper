@@ -1,5 +1,4 @@
 import express from "express";
-// import db from "../db/conn.mjs";
 import GenericService from "../interfaces/generic-service.mjs";
 
 const router = express.Router();

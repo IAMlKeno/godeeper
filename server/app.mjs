@@ -2,9 +2,12 @@ import express from "express";
 import cors from "cors";
 import "./loadEnvironment.mjs";
 import "express-async-errors";
-import tags from "./routes/tags.mjs";
+import notes from "./routes/notes.mjs";
 import sermons from "./routes/sermons.mjs";
+import tags from "./routes/tags.mjs";
+import users from "./routes/users.mjs";
 
+const port = process.env.PORT || 4200
 const app = express();
 
 app.use(cors());
@@ -12,27 +15,13 @@ app.use(express.json());
 
 app.use('/tags', tags);
 app.use('/sermons', sermons);
+app.use('/notes', notes);
+app.use('/users', users);
 
+// Index page.
 app.get('/', (req, res) => res.send('Hello world!'))
 
-// Users
-app.get('/user', (req, res) => res.send('Hello user!'))
-app.put('/user', (req, res) => res.send('Hello world!'))
-app.post('/user', (req, res) => res.send('Hello world!'))
-app.delete('/user', (req, res) => res.send('Hello world!'))
-app.get('/user/name/available', (req, res) => res.send('Hello username!'))
-app.get('/user/name/annoymous', (req, res) => res.send('Hello annoymous!'))
-
-// Notes
-app.get('/getMyNotes', (req, res) => res.send('Hello my notes!'))
-app.get('/notes', (req, res) => res.send('Hello notes!'))
-app.get('/note', (req, res) => res.send('Hello note!'))
-app.post('/note', (req, res) => res.send('Hello world!'))
-app.put('/note', (req, res) => res.send('Hello world!'))
-app.delete('/note', (req, res) => res.send('Hello world!'))
-
-const port = process.env.PORT || 4200
-
+// Error handler.
 app.use((err, _req, res, next) => {
   console.log(err);
   res.status(500).send("Uh oh! An unexpected error occured.")
